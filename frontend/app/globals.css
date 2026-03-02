@@ -1,0 +1,356 @@
+:root {
+  --font-heading: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  --bg-a: #f4f7fb;
+  --bg-b: #dbeafe;
+  --card: rgba(255, 255, 255, 0.86);
+  --line: rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --muted: #475569;
+  --brand: #0ea5e9;
+  --brand-strong: #0369a1;
+  --accent: #f97316;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
+  color: var(--text);
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(14, 165, 233, 0.25), transparent 34%),
+    radial-gradient(circle at 90% 8%, rgba(249, 115, 22, 0.22), transparent 28%),
+    linear-gradient(160deg, var(--bg-a), var(--bg-b));
+}
+
+.page-shell {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero-row {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(7px);
+}
+
+.hero-row h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.4vw, 2.35rem);
+}
+
+.hero-row p {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.camera-card,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.camera-card {
+  padding: 16px;
+}
+
+.camera-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.status {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.status-running {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.status-starting {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.45);
+}
+
+.status-error {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+.camera-stage {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #020617;
+  aspect-ratio: 16 / 9;
+}
+
+.camera-stage video,
+.camera-stage img,
+.camera-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.camera-stage canvas {
+  pointer-events: none;
+}
+
+.stage-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.media-hidden {
+  display: none;
+}
+
+.hidden-capture {
+  display: none;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.camera-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.mode-control {
+  min-width: 170px;
+}
+
+.mode-control label {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+}
+
+.mode-control select {
+  width: 100%;
+  padding: 8px 10px;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.button-secondary {
+  background: linear-gradient(135deg, #334155, #475569);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.metric-pill {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.7);
+  min-width: 98px;
+}
+
+.metric-pill span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.metric-pill strong {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.95rem;
+}
+
+.error-text {
+  color: #b91c1c;
+}
+
+.upload-meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.panel-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.panel {
+  padding: 14px;
+}
+
+.panel h2 {
+  font-size: 1rem;
+  margin: 0 0 10px;
+}
+
+.scroll-list {
+  display: grid;
+  gap: 8px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.detection-item {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text);
+}
+
+.detection-item small {
+  color: var(--muted);
+}
+
+.detection-item.active {
+  border-color: rgba(14, 165, 233, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.55);
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.safety-banner {
+  border-left: 4px solid var(--accent);
+  background: rgba(254, 215, 170, 0.36);
+  border-radius: 8px;
+  margin: 12px 0;
+  padding: 10px;
+  font-size: 0.88rem;
+}
+
+.answer-box {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.answer-box small {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+}
+
+.answer-box pre {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.metrics-panel .metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metrics-panel .metric-grid div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.metrics-panel span {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.metrics-panel strong {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono), monospace;
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
