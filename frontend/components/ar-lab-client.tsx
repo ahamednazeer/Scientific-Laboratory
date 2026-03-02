@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 
-import { apiUrl } from "@/lib/api";
+import { apiUrl } from "../lib/api";
 import type {
   Detection,
   DetectionResponse,
   Instrument,
   MetricsResponse
-} from "@/lib/types";
+} from "../lib/types";
 
 type RuntimeStatus = "idle" | "starting" | "running" | "error";
 type GuidanceMode = "ai" | "module";

@@ -53,7 +53,7 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 ## Docker (Multi-Stage)
-No Docker Compose required.
+You can run containers either with direct `docker run` commands or with Compose.
 
 ### 1) Build Backend Image
 ```bash
@@ -81,6 +81,24 @@ docker build -f frontend/Dockerfile -t scientific-lab-frontend:latest \
 ### 4) Run Frontend Container
 ```bash
 docker run --rm -p 3000:3000 scientific-lab-frontend:latest
+```
+
+### 5) Docker Compose (No Build)
+`docker-compose.yml` uses prebuilt images only (`image:`) and does not contain `build:`.
+
+```bash
+cd /Users/syed.ahamed/skillup/Scientific-Laboratory
+docker compose up -d
+```
+
+Stop:
+```bash
+docker compose down
+```
+
+If images are not present locally, pull/tag them first:
+```bash
+docker images | grep scientific-lab
 ```
 
 ## API Endpoints
