@@ -212,6 +212,8 @@ node_modules/
 frontend/.next/
 frontend/node_modules/
 .pnpm-store/
+!frontend/lib/
+!frontend/lib/*.ts
 
 # Logs
 *.log
